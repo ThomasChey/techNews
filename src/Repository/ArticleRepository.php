@@ -19,6 +19,22 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
+    /**
+     * Récupérer les articles du spotlight
+     * Uniquement les 5 derniers
+     * Trier par ordre décroissant
+     */
+    public function findBySpotlight()
+    {
+        # SELECT * FROM article as a WHERE a.spotlight = 1
+        return $this->createQueryBuilder('a')
+            ->where('a.spotlight = 1')
+            ->orderBy('a.dateCreation', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */
