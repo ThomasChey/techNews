@@ -13,6 +13,12 @@
         <!--colleft-->
         <div class="col-md-8 col-sm-12">
 
+            {% for message in app.flashes('notice') %}
+                <div class="alert alert-info">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
             <!--post-detail-->
             <article class="post-detail">
                 <h1>{{ article.titre }}</h1>
@@ -145,7 +151,7 @@
             </section>
         </div>
 
-        {% include 'components/_sidebar.html.twig' %}
+        {{ render(controller('App\\Controller\\DefaultController::sidebar')) }}
 
     </div>
 {% endblock %}

@@ -100,4 +100,24 @@ class DefaultController extends AbstractController
         return $this->render("default/article.html.twig", ['article' => $article]);
     }
 
+
+    /*
+     * Génération de la sidebar
+     */
+    public function sidebar()
+    {
+
+        $repository = $this->getDoctrine()
+            ->getRepository(Article::class);
+
+        # Récupération des 5 derniers articles.
+        $articles = $repository->findByLatest();
+
+        # Récupération des articles à la position "spécial".
+        $special = $repository->findBySpecial();
+
+        # Transmission des informations à la vue.
+        return $this->render('components/_sidebar.html.twig', ['articles' => $articles, 'special' => $special]);
+    }
+
 }

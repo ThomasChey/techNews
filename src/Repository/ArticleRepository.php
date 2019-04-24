@@ -35,6 +35,41 @@ class ArticleRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+
+    /**
+     * Récupérer les articles du spécial
+     * Uniquement les 5 derniers
+     * Trier par ordre décroissant
+     */
+    public function findBySpecial()
+    {
+        # SELECT * FROM article as a WHERE a.spotlight = 1
+        return $this->createQueryBuilder('a')
+            ->where('a.special = 1')
+            ->orderBy('a.dateCreation', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
+    /*
+     * Récupérer les 5 derniers articles de la BDD.
+     */
+    public function findByLatest()
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.dateCreation', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
+
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */
