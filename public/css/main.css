@@ -1652,3 +1652,23 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
       color: #ddd;
       border-bottom: 1px dotted #ddd; }
 
+.aller{
+  font-family: "Roboto Slab", serif;
+}
+
+.aller:hover{
+  color: #E53526;
+}
+
+.rediger{
+  background: #E53526;
+}
+
+.lienrediriger{
+  font-size: 1.4em;
+  color: white;
+}
+
+.lienrediriger:hover{
+  color: black;
+}
